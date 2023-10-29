@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 import Search from './components/Search/Search';
 import Characters from './components/Characters/Characters';
 import { Character } from './api/models';
@@ -13,7 +13,7 @@ interface AppState {
 
 type AppProps = Record<string, never>;
 
-class App extends React.Component<AppProps, AppState> {
+class App extends PureComponent<AppProps, AppState> {
   SEARCH_VALUE_KEY = 'rssReactIvanovaSearchValue';
 
   constructor(props: AppProps) {

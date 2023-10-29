@@ -1,7 +1,10 @@
+import { PureComponent } from 'react';
 import './Loader.scss';
 
-function Loader() {
-  return <span className="loader"></span>;
+class Loader extends PureComponent {
+  render() {
+    return <span className="loader"></span>;
+  }
 }
 
 export default Loader;

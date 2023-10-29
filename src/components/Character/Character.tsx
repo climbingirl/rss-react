@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 import { Character } from '../../api/models';
 import './Character.scss';
 
@@ -6,7 +6,7 @@ interface CharactersProps {
   character: Character;
 }
 
-class CharacterItem extends React.Component<CharactersProps> {
+class CharacterItem extends PureComponent<CharactersProps> {
   character = this.props.character;
 
   render() {
