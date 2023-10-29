@@ -4,6 +4,8 @@ import Characters from './components/Characters/Characters';
 import { Character } from './api/models';
 import { charactersAPI } from './api/charactersApi';
 import Loader from './components/Loader/Loader';
+import ErrorBoundaryBtn from './components/ErrorBoundary/ErrorBoundaryBtn/ErrorBoundaryBtn';
+import { EmptyProps } from './types';
 
 interface AppState {
   characters: Character[];
@@ -11,12 +13,10 @@ interface AppState {
   isLoading: boolean;
 }
 
-type AppProps = Record<string, never>;
-
-class App extends PureComponent<AppProps, AppState> {
+class App extends PureComponent<EmptyProps, AppState> {
   SEARCH_VALUE_KEY = 'rssReactIvanovaSearchValue';
 
-  constructor(props: AppProps) {
+  constructor(props: EmptyProps) {
     super(props);
     this.state = {
       characters: [],
@@ -30,7 +30,7 @@ class App extends PureComponent<AppProps, AppState> {
   }
 
   componentDidUpdate(
-    prevProps: Readonly<AppProps>,
+    prevProps: Readonly<EmptyProps>,
     prevState: Readonly<AppState>
   ) {
     if (prevState.searchValue !== this.state.searchValue) {
@@ -59,6 +59,7 @@ class App extends PureComponent<AppProps, AppState> {
           onValueChange={this.handleSearchValueChange.bind(this)}
           isLoading={this.state.isLoading}
         />
+        <ErrorBoundaryBtn />
         {this.state.isLoading ? (
           <Loader />
         ) : (

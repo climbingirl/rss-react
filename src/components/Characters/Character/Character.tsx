@@ -1,5 +1,5 @@
 import { PureComponent } from 'react';
-import { Character } from '../../api/models';
+import { Character } from '../../../api/models';
 import './Character.scss';
 
 interface CharactersProps {

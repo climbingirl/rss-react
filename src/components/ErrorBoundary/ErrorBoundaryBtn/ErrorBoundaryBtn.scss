@@ -1,0 +1,16 @@
+.error-boundary-btn {
+  display: block;
+  margin: 30px auto 0;
+  color: #4d5964;
+  font-weight: 600;
+  padding: 10px;
+  border: 1px solid #4d5964;
+  border-radius: 10px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: #eeeeee;
+  }
+}
