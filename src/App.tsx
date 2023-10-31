@@ -59,12 +59,12 @@ class App extends PureComponent<EmptyProps, AppState> {
           onValueChange={this.handleSearchValueChange.bind(this)}
           isLoading={this.state.isLoading}
         />
-        <ErrorBoundaryBtn />
         {this.state.isLoading ? (
           <Loader />
         ) : (
           <Characters characters={this.state.characters} />
         )}
+        <ErrorBoundaryBtn />
       </main>
     );
   }
