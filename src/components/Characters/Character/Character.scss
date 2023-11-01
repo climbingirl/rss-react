@@ -1,0 +1,37 @@
+.character {
+  max-width: 250px;
+  width: 100%;
+  border: 1px solid #e8edee;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  transition: 0.1s;
+
+  &:hover {
+    transform: scale(105%);
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+    text-align: center;
+    color: #33899d;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__info {
+    text-align: center;
+
+    &-title {
+      color: #9d5d33;
+    }
+
+    & > div {
+      margin-bottom: 5px;
+    }
+  }
+}
