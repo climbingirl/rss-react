@@ -1,40 +1,24 @@
-import { PureComponent } from 'react';
-import { EmptyProps } from '../../../types';
+import { useEffect, useState } from 'react';
 import './ErrorBoundaryBtn.scss';
 
-interface ErrorBoundaryBtnState {
-  hasError: boolean;
-}
+function ErrorBoundaryBtn() {
+  const [hasError, setHasError] = useState(false);
 
-class ErrorBoundaryBtn extends PureComponent<
-  EmptyProps,
-  ErrorBoundaryBtnState
-> {
-  constructor(props: EmptyProps) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  componentDidUpdate() {
-    if (this.state.hasError === true) {
+  useEffect(() => {
+    if (hasError === true) {
       throw new Error('ErrorBoundary error');
     }
+  }, [hasError]);
+
+  function handleClick() {
+    setHasError(true);
   }
 
-  handleClick() {
-    this.setState({ hasError: true });
-  }
-
-  render() {
-    return (
-      <button
-        className="error-boundary-btn"
-        onClick={this.handleClick.bind(this)}
-      >
-        Test ErrorBoundary
-      </button>
-    );
-  }
+  return (
+    <button className="error-boundary-btn" onClick={handleClick}>
+      Test ErrorBoundary
+    </button>
+  );
 }
 
 export default ErrorBoundaryBtn;

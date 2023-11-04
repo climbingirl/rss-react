@@ -1,61 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ErrorBoundaryBtn from '../ErrorBoundary/ErrorBoundaryBtn/ErrorBoundaryBtn';
+import { useSearchParams } from 'react-router-dom';
+import { SEARCH_VALUE_KEY } from '../App/App';
 import './Search.scss';
 
 interface SearchProps {
-  value: string;
-  onValueChange: (value: string) => void;
-  isLoading: boolean;
+  gamesLoading: boolean;
 }
 
-interface SearchState {
-  value: string;
-}
+function Search({ gamesLoading }: SearchProps) {
+  const [params, setParams] = useSearchParams();
+  const search = params.get('search') || '';
+  const [searchValue, setSearchValue] = useState(search);
 
-class Search extends React.Component<SearchProps, SearchState> {
-  constructor(props: SearchProps) {
-    super(props);
-    this.state = {
-      value: this.props.value,
-    };
-  }
-
-  handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    this.props.onValueChange(this.state.value);
+    params.set('search', searchValue);
+    params.set('page', '1');
+    setParams(params);
+    localStorage.setItem(SEARCH_VALUE_KEY, searchValue);
   }
 
-  handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({ value: e.target.value });
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearchValue(e.target.value);
   }
 
-  render() {
-    return (
-      <section className="search">
-        <div className="container">
-          <form
-            className="search__form"
-            role="search"
-            onSubmit={this.handleSubmit.bind(this)}
-          >
-            <input
-              className="search__input"
-              value={this.state.value}
-              placeholder="Enter character name"
-              type="text"
-              onChange={this.handleChange.bind(this)}
-            />
-            <button
-              className="search__btn"
-              type="submit"
-              disabled={this.props.isLoading}
-            >
-              Search
-            </button>
-          </form>
-        </div>
-      </section>
-    );
-  }
+  return (
+    <section className="search">
+      <form className="search__form" role="search" onSubmit={handleSubmit}>
+        <input
+          className="search__input"
+          value={searchValue}
+          placeholder="Search game"
+          type="text"
+          onChange={handleChange}
+        />
+        <button className="search__btn" type="submit" disabled={gamesLoading}>
+          Search
+        </button>
+      </form>
+      <ErrorBoundaryBtn />
+    </section>
+  );
 }
 
 export default Search;

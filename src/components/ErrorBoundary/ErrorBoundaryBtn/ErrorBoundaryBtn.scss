@@ -1,18 +1,15 @@
 .error-boundary-btn {
-  position: fixed;
-  right: 50px;
-  bottom: 50px;
-  color: #4d5964;
+  color: rgba(255, 255, 255, 0.7);
   font-weight: 600;
   padding: 10px;
-  border: 1px solid #4d5964;
-  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
   background-color: transparent;
   cursor: pointer;
   transition: 0.2s;
 
   &:hover {
-    color: #33899d;
-    border: 1px solid #33899d;
+    color: #fff;
+    border: 1px solid #fff;
   }
 }
