@@ -13,6 +13,7 @@ function PaginationPages() {
   function handleClick(e: React.MouseEvent) {
     const selectedPage = e.currentTarget.getAttribute('data-page') || '1';
     params.set('page', selectedPage);
+    params.delete('details');
     setParams(params);
   }
 

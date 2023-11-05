@@ -17,6 +17,7 @@ function Search({ gamesLoading }: SearchProps) {
     e.preventDefault();
     params.set('search', searchValue);
     params.set('page', '1');
+    params.delete('details');
     setParams(params);
     localStorage.setItem(SEARCH_VALUE_KEY, searchValue);
   }

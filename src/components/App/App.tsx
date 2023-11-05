@@ -9,7 +9,7 @@ import { GamesContext } from './AppContext';
 export const SEARCH_VALUE_KEY = 'rssReactIvanovaSearchValue';
 
 function App() {
-  const [params] = useSearchParams();
+  const [params, setParams] = useSearchParams();
   const searchValue = params.get('search') || '';
   const currentPage = Number(params.get('page')) || 1;
   const [games, setGames] = useState<GameModel[]>([]);
@@ -18,11 +18,14 @@ function App() {
   const [pageSize, setPageSize] = useState(20);
 
   useEffect(() => {
-    handleGamesRequest();
+    params.set('search', searchValue);
+    params.set('page', String(currentPage));
+    setParams(params);
+    loadGames();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue, currentPage, pageSize]);
 
-  async function handleGamesRequest() {
+  async function loadGames() {
     setGamesLoading(true);
     try {
       const response = await gamesAPI.getGames(

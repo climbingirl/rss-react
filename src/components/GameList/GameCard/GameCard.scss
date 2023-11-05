@@ -4,6 +4,7 @@
   overflow: hidden;
   background-color: #202020;
   transition: 0.2s;
+  cursor: pointer;
 
   &:hover {
     transform: scale(105%);
