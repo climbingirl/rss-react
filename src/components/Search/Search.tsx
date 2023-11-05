@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import ErrorBoundaryBtn from '../ErrorBoundary/ErrorBoundaryBtn/ErrorBoundaryBtn';
 import { useSearchParams } from 'react-router-dom';
-import { SEARCH_VALUE_KEY } from '../App/App';
 import './Search.scss';
 
 interface SearchProps {
   gamesLoading: boolean;
+  searchValueKey: string;
 }
 
-function Search({ gamesLoading }: SearchProps) {
+function Search({ gamesLoading, searchValueKey }: SearchProps) {
   const [params, setParams] = useSearchParams();
   const search = params.get('search') || '';
   const [searchValue, setSearchValue] = useState(search);
@@ -19,7 +19,7 @@ function Search({ gamesLoading }: SearchProps) {
     params.set('page', '1');
     params.delete('details');
     setParams(params);
-    localStorage.setItem(SEARCH_VALUE_KEY, searchValue);
+    localStorage.setItem(searchValueKey, searchValue);
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {

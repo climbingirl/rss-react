@@ -1,6 +1,11 @@
-import { GameDetailsModel, GameDetailsResponseModel } from './models';
+import {
+  GameDetailsModel,
+  GameDetailsResponseModel,
+  GameModel,
+  GameResponseModel,
+} from './models';
 
-export const selectGames = (game: GameDetailsResponseModel) => ({
+export const selectGames = (game: GameResponseModel): GameModel => ({
   id: game?.id,
   name: game?.name,
   image: game?.background_image,

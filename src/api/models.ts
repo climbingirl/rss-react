@@ -2,12 +2,20 @@ export interface GamesData {
   count: number;
   next: string;
   previous: boolean;
-  results: object[];
+  results: GameResponseModel[];
 }
 
 export interface GamesResponse {
   count: number;
   games: GameModel[];
+}
+
+export interface GameResponseModel {
+  id: number;
+  name: string;
+  background_image: string;
+  rating: number;
+  suggestions_count: number;
 }
 
 export interface GameModel {
