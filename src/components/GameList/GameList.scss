@@ -1,0 +1,17 @@
+.game-list {
+  flex-shrink: 100;
+
+  &__empty {
+    margin-top: 100px;
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    column-gap: 1%;
+    row-gap: 20px;
+  }
+}

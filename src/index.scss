@@ -1,0 +1,46 @@
+html {
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+body {
+  font:
+    400 15px/20px 'Open Sans',
+    sans-serif;
+  color: #fff;
+  background-color: #151515;
+  padding: 10px 40px;
+}
+
+a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-style: italic;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 35px;
+}
+
+h3 {
+  font-size: 25px;
+  line-height: 30px;
+}

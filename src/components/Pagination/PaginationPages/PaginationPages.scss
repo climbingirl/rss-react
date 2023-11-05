@@ -1,0 +1,36 @@
+.pagination {
+  &__pages {
+    display: flex;
+    column-gap: 10px;
+  }
+
+  &__btn {
+    font-size: 15px;
+    font-weight: 600;
+    width: 35px;
+    height: 35px;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: 0.3s;
+
+    &_current {
+      pointer-events: none;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    &:disabled {
+      opacity: 0.2;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+}

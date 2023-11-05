@@ -1,0 +1,53 @@
+.search {
+  display: flex;
+  justify-content: center;
+  column-gap: 15px;
+  padding: 20px 0;
+
+  &__form {
+    flex-grow: 1;
+    margin: 0 auto;
+    max-width: 700px;
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+  }
+
+  &__input {
+    font:
+      400 16px/20px 'Open Sans',
+      sans-serif;
+    flex-grow: 1;
+    height: 45px;
+    border: none;
+    padding: 0 20px;
+    border-radius: 25px;
+    color: rgba(255, 255, 255, 0.8);
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.15);
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  &__btn {
+    text-transform: uppercase;
+    color: #fff;
+    height: 45px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    &:disabled:hover {
+      background-color: #722b2b;
+    }
+  }
+}
