@@ -43,21 +43,28 @@ function MainPage() {
     }
     setGamesLoading(false);
   }
-  if (gamesLoading) {
-    return <Loader />;
-  }
 
   return (
-    <GamesContext.Provider value={{ games, gamesCount, pageSize, setPageSize }}>
-      <section className="main-page">
-        <Search gamesLoading={gamesLoading} searchValueKey={SEARCH_VALUE_KEY} />
-        <Pagination />
-        <div className="main__inner">
-          <GameList />
-          <GameDetails />
-        </div>
-      </section>
-    </GamesContext.Provider>
+    <section className="main-page">
+      <Search
+        value={searchValue}
+        gamesLoading={gamesLoading}
+        searchValueKey={SEARCH_VALUE_KEY}
+      />
+      {gamesLoading ? (
+        <Loader />
+      ) : (
+        <GamesContext.Provider
+          value={{ games, gamesCount, pageSize, setPageSize }}
+        >
+          <Pagination />
+          <div className="main__inner">
+            <GameList />
+            <GameDetails />
+          </div>
+        </GamesContext.Provider>
+      )}
+    </section>
   );
 }
 

@@ -4,14 +4,14 @@ import { useSearchParams } from 'react-router-dom';
 import './Search.scss';
 
 interface SearchProps {
+  value: string;
   gamesLoading: boolean;
   searchValueKey: string;
 }
 
-function Search({ gamesLoading, searchValueKey }: SearchProps) {
+function Search({ value, gamesLoading, searchValueKey }: SearchProps) {
   const [params, setParams] = useSearchParams();
-  const search = params.get('search') || '';
-  const [searchValue, setSearchValue] = useState(search);
+  const [searchValue, setSearchValue] = useState(value);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
