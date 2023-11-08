@@ -4,11 +4,10 @@ import { GamesContext } from '../../App/AppContext';
 import './PaginationPages.scss';
 
 function PaginationPages() {
+  const { gamesCount, pageSize } = useContext(GamesContext);
   const [params, setParams] = useSearchParams();
   const page = Number(params.get('page')) || 1;
-  const pageSize = Number(params.get('page-size')) || 20;
-  const { gamesCount } = useContext(GamesContext);
-  const pagesCount = Math.trunc(gamesCount / Number(pageSize));
+  const pagesCount = Math.trunc(gamesCount / pageSize);
 
   function handleClick(e: React.MouseEvent) {
     const selectedPage = e.currentTarget.getAttribute('data-page') || '1';

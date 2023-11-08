@@ -12,6 +12,7 @@ function PaginationSize() {
     if (selectedSize < 10) selectedSize = 10;
     if (selectedSize > 100) selectedSize = 100;
     setPageSize(selectedSize);
+    params.set('page', '1');
     params.delete('details');
     setParams(params);
   }

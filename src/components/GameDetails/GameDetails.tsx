@@ -40,14 +40,11 @@ function GameDetails() {
         <Loader />
       ) : (
         <>
-          <button className="game-details__close-btn" onClick={handleClose}>
-            ✕
-          </button>
           <div className="game-details__inner">
             {!game ? (
               <div className="game-details__empty">Nothing found!</div>
             ) : (
-              <>
+              <div className="game-details__content">
                 <img className="game-details__image" src={game?.image}></img>
                 <h2 className="game-details__name">{game?.name}</h2>
                 <div className="game-details__rate">
@@ -65,8 +62,11 @@ function GameDetails() {
                   </a>
                 </div>
                 <p className="game-details__desc">{game?.description}</p>
-              </>
+              </div>
             )}
+            <button className="game-details__close-btn" onClick={handleClose}>
+              ✕
+            </button>
           </div>
         </>
       )}
