@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import Loader from '../../components/Loader/Loader';
 import { useSearchParams } from 'react-router-dom';
 import { gamesAPI } from '../../api/api';
-import { GameDetailsModel } from '../../api/models';
+import { GameDetailsModel } from '../../types/models';
+import { SEARCH_PARAMS } from '../../router/searchParams';
 import './GameDetails.scss';
 
 function GameDetails() {
   const [params, setParams] = useSearchParams();
-  const gameId = Number(params.get('details')) || null;
+  const gameId = Number(params.get(SEARCH_PARAMS.DETAILS)) || null;
   const [game, setGame] = useState<GameDetailsModel | null>(null);
   const [loading, setLoading] = useState(false);
   const gemeDetailsShowClass = gameId ? ' game-details_show' : '';

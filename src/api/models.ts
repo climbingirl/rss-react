@@ -1,16 +1,13 @@
-export interface GamesData {
+import { GameModel } from '../types/models';
+
+export interface GetGamesApiResponse {
   count: number;
   next: string;
   previous: boolean;
-  results: GameResponseModel[];
+  results: GameApiModel[];
 }
 
-export interface GamesResponse {
-  count: number;
-  games: GameModel[];
-}
-
-export interface GameResponseModel {
+export interface GameApiModel {
   id: number;
   name: string;
   background_image: string;
@@ -18,15 +15,12 @@ export interface GameResponseModel {
   suggestions_count: number;
 }
 
-export interface GameModel {
-  id: number;
-  name: string;
-  image: string;
-  rating: number;
-  suggestionsCount: number;
+export interface GetGamesPromise {
+  count: number;
+  games: GameModel[];
 }
 
-export interface GameDetailsResponseModel {
+export interface GetGameApiResponse {
   id: number;
   name: string;
   background_image: string;
@@ -34,16 +28,5 @@ export interface GameDetailsResponseModel {
   rating: number;
   released: string;
   suggestions_count: number;
-  website: string;
-}
-
-export interface GameDetailsModel {
-  id: number;
-  name: string;
-  image: string;
-  description: string;
-  rating: number;
-  released: string;
-  suggestionsCount: number;
   website: string;
 }

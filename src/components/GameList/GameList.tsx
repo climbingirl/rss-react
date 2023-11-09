@@ -1,10 +1,10 @@
 import GameCard from './GameCard/GameCard';
 import { useContext } from 'react';
-import { GamesContext } from '../App/AppContext';
+import { AppContext } from '../../context/AppContext';
 import './GameList.scss';
 
 function GameList() {
-  const { games } = useContext(GamesContext);
+  const { games } = useContext(AppContext);
 
   return (
     <section className="game-list">
@@ -13,7 +13,7 @@ function GameList() {
       ) : (
         <div className="game-list__inner">
           {games.map((game) => (
-            <GameCard game={game} key={game.id} />
+            <GameCard game={game} key={game?.id} />
           ))}
         </div>
       )}

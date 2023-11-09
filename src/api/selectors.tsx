@@ -1,11 +1,7 @@
-import {
-  GameDetailsModel,
-  GameDetailsResponseModel,
-  GameModel,
-  GameResponseModel,
-} from './models';
+import { GameDetailsModel, GameModel } from '../types/models';
+import { GameApiModel, GetGameApiResponse } from './models';
 
-export const selectGames = (game: GameResponseModel): GameModel => ({
+export const selectGames = (game: GameApiModel): GameModel => ({
   id: game?.id,
   name: game?.name,
   image: game?.background_image,
@@ -13,9 +9,7 @@ export const selectGames = (game: GameResponseModel): GameModel => ({
   suggestionsCount: game?.suggestions_count,
 });
 
-export const selectGame = (
-  game: GameDetailsResponseModel
-): GameDetailsModel => ({
+export const selectGame = (game: GetGameApiResponse): GameDetailsModel => ({
   id: game?.id,
   name: game?.name,
   image: game?.background_image,

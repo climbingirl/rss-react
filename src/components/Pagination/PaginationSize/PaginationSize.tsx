@@ -1,19 +1,20 @@
 import { useContext } from 'react';
-import { GamesContext } from '../../App/AppContext';
+import { AppContext } from '../../../context/AppContext';
 import { useSearchParams } from 'react-router-dom';
+import { SEARCH_PARAMS } from '../../../router/searchParams';
 import './PaginationSize.scss';
 
 function PaginationSize() {
   const [params, setParams] = useSearchParams();
-  const { pageSize, setPageSize } = useContext(GamesContext);
+  const { pageSize, setPageSize } = useContext(AppContext);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     let selectedSize = Number(e.target.value);
     if (selectedSize < 10) selectedSize = 10;
     if (selectedSize > 100) selectedSize = 100;
     setPageSize(selectedSize);
-    params.set('page', '1');
-    params.delete('details');
+    params.set(SEARCH_PARAMS.PAGE, '1');
+    params.delete(SEARCH_PARAMS.DETAILS);
     setParams(params);
   }
 

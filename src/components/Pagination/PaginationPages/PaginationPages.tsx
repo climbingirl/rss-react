@@ -1,18 +1,19 @@
 import { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { GamesContext } from '../../App/AppContext';
+import { AppContext } from '../../../context/AppContext';
+import { SEARCH_PARAMS } from '../../../router/searchParams';
 import './PaginationPages.scss';
 
 function PaginationPages() {
-  const { gamesCount, pageSize } = useContext(GamesContext);
+  const { gamesCount, pageSize } = useContext(AppContext);
   const [params, setParams] = useSearchParams();
-  const page = Number(params.get('page')) || 1;
-  const pagesCount = Math.trunc(gamesCount / pageSize);
+  const page = Number(params.get(SEARCH_PARAMS.PAGE)) || 1;
+  const pagesCount = Math.round(gamesCount / pageSize);
 
   function handleClick(e: React.MouseEvent) {
     const selectedPage = e.currentTarget.getAttribute('data-page') || '1';
-    params.set('page', selectedPage);
-    params.delete('details');
+    params.set(SEARCH_PARAMS.PAGE, selectedPage);
+    params.delete(SEARCH_PARAMS.DETAILS);
     setParams(params);
   }
 

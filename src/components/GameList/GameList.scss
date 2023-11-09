@@ -1,8 +1,10 @@
 .game-list {
   flex-shrink: 100;
+  width: 100%;
+  text-align: center;
 
   &__empty {
-    margin-top: 100px;
+    margin-top: 10%;
     font-size: 30px;
     line-height: 40px;
   }

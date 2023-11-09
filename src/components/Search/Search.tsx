@@ -1,29 +1,31 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ErrorBoundaryBtn from '../ErrorBoundary/ErrorBoundaryBtn/ErrorBoundaryBtn';
 import { useSearchParams } from 'react-router-dom';
+import { AppContext } from '../../context/AppContext';
+import { SEARCH_VALUE_KEY } from '../../global-vars';
+import { SEARCH_PARAMS } from '../../router/searchParams';
 import './Search.scss';
 
 interface SearchProps {
-  value: string;
   gamesLoading: boolean;
-  searchValueKey: string;
 }
 
-function Search({ value, gamesLoading, searchValueKey }: SearchProps) {
+function Search({ gamesLoading }: SearchProps) {
   const [params, setParams] = useSearchParams();
-  const [searchValue, setSearchValue] = useState(value);
+  const { searchValue } = useContext(AppContext);
+  const [value, setValue] = useState(searchValue);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    params.set('search', searchValue);
-    params.set('page', '1');
-    params.delete('details');
+    params.set(SEARCH_PARAMS.SEARCH, value);
+    params.set(SEARCH_PARAMS.PAGE, '1');
+    params.delete(SEARCH_PARAMS.DETAILS);
     setParams(params);
-    localStorage.setItem(searchValueKey, searchValue);
+    localStorage.setItem(SEARCH_VALUE_KEY, value);
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchValue(e.target.value);
+    setValue(e.target.value);
   }
 
   return (
@@ -31,7 +33,7 @@ function Search({ value, gamesLoading, searchValueKey }: SearchProps) {
       <form className="search__form" role="search" onSubmit={handleSubmit}>
         <input
           className="search__input"
-          value={searchValue}
+          value={value}
           placeholder="Search game"
           type="text"
           onChange={handleChange}

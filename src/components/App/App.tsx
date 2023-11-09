@@ -1,12 +1,15 @@
 import { Outlet } from 'react-router-dom';
+import { AppContextProvider } from '../../context/AppContext';
 
 function App() {
   return (
-    <div className="app">
-      <main className="main">
-        <Outlet />
-      </main>
-    </div>
+    <AppContextProvider>
+      <div className="app">
+        <main className="main">
+          <Outlet />
+        </main>
+      </div>
+    </AppContextProvider>
   );
 }
 

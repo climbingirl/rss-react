@@ -3,27 +3,28 @@ import GameList from '../../components/GameList/GameList';
 import Loader from '../../components/Loader/Loader';
 import GameDetails from '../../components/GameDetails/GameDetails';
 import Search from '../../components/Search/Search';
-import { GamesContext } from '../../components/App/AppContext';
 import { gamesAPI } from '../../api/api';
-import { useEffect, useState } from 'react';
-import { GameModel } from '../../api/models';
+import { useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { AppContext } from '../../context/AppContext';
+import { SEARCH_PARAMS } from '../../router/searchParams';
 import './MainPage.scss';
 
 function MainPage() {
-  const SEARCH_VALUE_KEY = 'rssReactIvanovaSearchValue';
   const [params, setParams] = useSearchParams();
-  const searchValue = params.get('search') || '';
-  const currentPage = Number(params.get('page')) || 1;
-  const [games, setGames] = useState<GameModel[]>([]);
+  const currentPage = Number(params.get(SEARCH_PARAMS.PAGE)) || 1;
+  const { setGames, pageSize, setGamesCount, searchValue } =
+    useContext(AppContext);
   const [gamesLoading, setGamesLoading] = useState(false);
-  const [gamesCount, setGamesCount] = useState(0);
-  const [pageSize, setPageSize] = useState(20);
 
   useEffect(() => {
-    params.set('search', searchValue);
-    params.set('page', String(currentPage));
+    params.set(SEARCH_PARAMS.SEARCH, searchValue);
+    params.set(SEARCH_PARAMS.PAGE, String(currentPage));
     setParams(params);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     loadGames();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue, currentPage, pageSize]);
@@ -46,23 +47,17 @@ function MainPage() {
 
   return (
     <section className="main-page">
-      <Search
-        value={searchValue}
-        gamesLoading={gamesLoading}
-        searchValueKey={SEARCH_VALUE_KEY}
-      />
+      <Search gamesLoading={gamesLoading} />
       {gamesLoading ? (
         <Loader />
       ) : (
-        <GamesContext.Provider
-          value={{ games, gamesCount, pageSize, setPageSize }}
-        >
+        <>
           <Pagination />
           <div className="main__inner">
             <GameList />
             <GameDetails />
           </div>
-        </GamesContext.Provider>
+        </>
       )}
     </section>
   );
