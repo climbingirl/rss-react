@@ -3,7 +3,6 @@ import {
   fireEvent,
   render,
   screen,
-  waitFor,
 } from '@testing-library/react';
 import Search from './Search';
 import withRouter from '../../test/withRouter';
@@ -49,10 +48,8 @@ describe('Search', () => {
     const setItemSpy = vi.spyOn(localStorage, 'setItem');
     fireEvent.change(input, { target: { value: 'test setItem' } });
     fireEvent.click(button);
-    waitFor(() => {
-      expect(setItemSpy).toHaveBeenCalledWith(SEARCH_VALUE_KEY, 'test setItem');
-      expect(localStorage.getItem(SEARCH_VALUE_KEY)).toBe('test setItem');
-    });
+    expect(setItemSpy).toHaveBeenCalledWith(SEARCH_VALUE_KEY, 'test setItem');
+    expect(localStorage.getItem(SEARCH_VALUE_KEY)).toBe('test setItem');
   });
 
   it('component retrieves the value from the local storage upon mounting', () => {

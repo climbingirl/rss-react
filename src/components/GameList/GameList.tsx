@@ -6,9 +6,11 @@ function GameList() {
   const { games } = useAppContext();
 
   return (
-    <section className="game-list">
+    <section className="game-list" data-testid="games-list">
       {!games.length ? (
-        <div className="game-list__empty">Nothing found!</div>
+        <div className="game-list__empty" data-testid="games-empty-list">
+          Nothing found!
+        </div>
       ) : (
         <div className="game-list__inner">
           {games.map((game) => (
