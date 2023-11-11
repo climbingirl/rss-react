@@ -1,12 +1,11 @@
-import { useContext } from 'react';
-import { AppContext } from '../../../context/AppContext';
 import { useSearchParams } from 'react-router-dom';
 import { SEARCH_PARAMS } from '../../../router/searchParams';
+import { useAppContext } from '../../../context/AppContext';
 import './PaginationSize.scss';
 
 function PaginationSize() {
   const [params, setParams] = useSearchParams();
-  const { pageSize, setPageSize } = useContext(AppContext);
+  const { pageSize, setPageSize } = useAppContext();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     let selectedSize = Number(e.target.value);

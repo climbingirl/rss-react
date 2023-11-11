@@ -1,10 +1,9 @@
 import GameCard from './GameCard/GameCard';
-import { useContext } from 'react';
-import { AppContext } from '../../context/AppContext';
+import { useAppContext } from '../../context/AppContext';
 import './GameList.scss';
 
 function GameList() {
-  const { games } = useContext(AppContext);
+  const { games } = useAppContext();
 
   return (
     <section className="game-list">

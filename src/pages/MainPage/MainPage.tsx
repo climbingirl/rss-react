@@ -4,17 +4,16 @@ import Loader from '../../components/Loader/Loader';
 import GameDetails from '../../components/GameDetails/GameDetails';
 import Search from '../../components/Search/Search';
 import { gamesAPI } from '../../api/api';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { AppContext } from '../../context/AppContext';
+import { useAppContext } from '../../context/AppContext';
 import { SEARCH_PARAMS } from '../../router/searchParams';
 import './MainPage.scss';
 
 function MainPage() {
   const [params, setParams] = useSearchParams();
   const currentPage = Number(params.get(SEARCH_PARAMS.PAGE)) || 1;
-  const { setGames, pageSize, setGamesCount, searchValue } =
-    useContext(AppContext);
+  const { setGames, pageSize, setGamesCount, searchValue } = useAppContext();
   const [gamesLoading, setGamesLoading] = useState(false);
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { PropsWithChildren, createContext, useState } from 'react';
+import { PropsWithChildren, createContext, useContext, useState } from 'react';
 import { GameModel } from '../types/models';
 import { useSearchParams } from 'react-router-dom';
 import { SEARCH_VALUE_KEY } from '../global-vars';
@@ -14,7 +14,8 @@ interface AppContextValue {
   searchValue: string;
 }
 
-export const AppContext = createContext<AppContextValue>(null!);
+const AppContext = createContext<AppContextValue>(null!);
+export const useAppContext = () => useContext(AppContext);
 
 export function AppContextProvider({ children }: PropsWithChildren) {
   const [games, setGames] = useState<GameModel[]>([]);

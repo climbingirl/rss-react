@@ -7,12 +7,13 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint ./src --ext .ts,.tsx --max-warnings 0",
+    "lint:fix": "eslint ./src --ext .ts,.tsx --fix",
     "preview": "vite preview",
     "format": "prettier . --check",
     "format:fix": "prettier . --write",
     "prepare": "husky install",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage.enabled --coverage.all"
   },
   "dependencies": {
     "react": "^18.2.0",

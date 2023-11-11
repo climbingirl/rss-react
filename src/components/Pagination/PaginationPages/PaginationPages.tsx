@@ -1,11 +1,10 @@
-import { useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { AppContext } from '../../../context/AppContext';
 import { SEARCH_PARAMS } from '../../../router/searchParams';
+import { useAppContext } from '../../../context/AppContext';
 import './PaginationPages.scss';
 
 function PaginationPages() {
-  const { gamesCount, pageSize } = useContext(AppContext);
+  const { gamesCount, pageSize } = useAppContext();
   const [params, setParams] = useSearchParams();
   const page = Number(params.get(SEARCH_PARAMS.PAGE)) || 1;
   const pagesCount = Math.round(gamesCount / pageSize);

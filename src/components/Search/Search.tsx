@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import ErrorBoundaryBtn from '../ErrorBoundary/ErrorBoundaryBtn/ErrorBoundaryBtn';
 import { useSearchParams } from 'react-router-dom';
-import { AppContext } from '../../context/AppContext';
+import { useAppContext } from '../../context/AppContext';
 import { SEARCH_VALUE_KEY } from '../../global-vars';
 import { SEARCH_PARAMS } from '../../router/searchParams';
 import './Search.scss';
@@ -12,7 +12,7 @@ interface SearchProps {
 
 function Search({ gamesLoading }: SearchProps) {
   const [params, setParams] = useSearchParams();
-  const { searchValue } = useContext(AppContext);
+  const { searchValue } = useAppContext();
   const [value, setValue] = useState(searchValue);
 
   function handleSubmit(e: React.FormEvent) {
