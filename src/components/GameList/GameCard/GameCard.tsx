@@ -17,9 +17,11 @@ function GameCard({ game }: GameCardProps) {
 
   return (
     <div className="game-card" onClick={handleClick} data-testid="game-card">
-      <img className="game-card__img" src={game?.image}></img>
+      <img className="game-card__img" src={game?.image} alt={game?.name}></img>
       <div className="game-card__info">
-        <div className="game-card__name">{game?.name}</div>
+        <div className="game-card__name" data-testid="game-name">
+          {game?.name}
+        </div>
       </div>
     </div>
   );

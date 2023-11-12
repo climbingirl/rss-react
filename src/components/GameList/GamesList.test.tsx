@@ -14,7 +14,7 @@ describe('GamesList', () => {
         games,
       };
     });
-    render(withRouter(<GameList />, '?'));
+    render(withRouter(<GameList />));
     const gamesList = screen.getByTestId('games-list');
     const gameCards = screen.getAllByTestId('game-card');
     expect(gamesList).toBeInTheDocument();
@@ -27,7 +27,7 @@ describe('GamesList', () => {
         games: [],
       };
     });
-    render(withRouter(<GameList />, '?'));
+    render(withRouter(<GameList />));
     const gamesEmtyList = screen.getByTestId('games-empty-list');
     expect(gamesEmtyList).toHaveTextContent('Nothing found!');
   });

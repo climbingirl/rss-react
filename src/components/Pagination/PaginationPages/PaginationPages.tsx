@@ -42,6 +42,7 @@ function PaginationPages() {
         data-page={page + 1}
         onClick={handleClick}
         disabled={page >= pagesCount}
+        data-testid="next-page"
       >
         &rsaquo;
       </button>
