@@ -1,27 +1,17 @@
 import React, { useState } from 'react';
 import ErrorBoundaryBtn from '../ErrorBoundary/ErrorBoundaryBtn/ErrorBoundaryBtn';
-import { useSearchParams } from 'react-router-dom';
-import { useAppContext } from '../../context/AppContext';
-import { SEARCH_VALUE_KEY } from '../../global-vars';
-import { SEARCH_PARAMS } from '../../router/searchParams';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { setSearchValue } from '../../store/gamesSlice/gamesSlice';
 import './Search.scss';
 
-interface SearchProps {
-  gamesLoading: boolean;
-}
-
-function Search({ gamesLoading }: SearchProps) {
-  const [params, setParams] = useSearchParams();
-  const { searchValue } = useAppContext();
+function Search() {
+  const searchValue = useAppSelector((state) => state.games.searchValue);
   const [value, setValue] = useState(searchValue);
+  const dispatch = useAppDispatch();
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    params.set(SEARCH_PARAMS.SEARCH, value);
-    params.set(SEARCH_PARAMS.PAGE, '1');
-    params.delete(SEARCH_PARAMS.DETAILS);
-    setParams(params);
-    localStorage.setItem(SEARCH_VALUE_KEY, value);
+    dispatch(setSearchValue(value));
   }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -38,7 +28,7 @@ function Search({ gamesLoading }: SearchProps) {
           type="text"
           onChange={handleChange}
         />
-        <button className="search__btn" type="submit" disabled={gamesLoading}>
+        <button className="search__btn" type="submit">
           Search
         </button>
       </form>

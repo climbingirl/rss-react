@@ -1,10 +1,7 @@
 import GameCard from './GameCard/GameCard';
-import { useAppContext } from '../../context/AppContext';
 import './GameList.scss';
 
 function GameList() {
-  const { games } = useAppContext();
-
   return (
     <section className="game-list" data-testid="games-list">
       {!games.length ? (
