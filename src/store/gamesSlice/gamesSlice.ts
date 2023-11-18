@@ -3,10 +3,7 @@ import { gamesState } from './gamesSlice.types';
 
 const initialState: gamesState = {
   searchValue: '',
-  currentPage: 0,
   pageSize: 20,
-  gamesCount: 0,
-  gamesLoading: false,
 };
 
 const gamesSlice = createSlice({
@@ -16,8 +13,11 @@ const gamesSlice = createSlice({
     setSearchValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
     },
+    setPageSize: (state, action: PayloadAction<number>) => {
+      state.pageSize = action.payload;
+    },
   },
 });
 
-export const { setSearchValue } = gamesSlice.actions;
+export const { setSearchValue, setPageSize } = gamesSlice.actions;
 export default gamesSlice.reducer;

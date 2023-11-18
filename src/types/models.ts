@@ -1,18 +1,14 @@
 export interface GameModel {
   id: number;
   name: string;
-  image: string;
-  rating: number;
-  suggestionsCount: number;
+  background_image: string;
 }
 
 export interface GameDetailsModel {
   id: number;
   name: string;
-  image: string;
-  description: string;
+  background_image: string;
+  description_raw: string;
   rating: number;
-  released: string;
-  suggestionsCount: number;
   website: string;
 }

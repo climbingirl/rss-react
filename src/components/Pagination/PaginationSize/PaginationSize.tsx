@@ -1,18 +1,20 @@
 import { useSearchParams } from 'react-router-dom';
 import { SEARCH_PARAMS } from '../../../router/searchParams';
-import { useAppContext } from '../../../context/AppContext';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
+import { setPageSize } from '../../../store/gamesSlice/gamesSlice';
 import './PaginationSize.scss';
 
 function PaginationSize() {
   const [params, setParams] = useSearchParams();
-  const { pageSize, setPageSize } = useAppContext();
+  const pageSize = useAppSelector((state) => state.games.pageSize);
+  const dispatch = useAppDispatch();
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     let selectedSize = Number(e.target.value);
     if (selectedSize < 10) selectedSize = 10;
     if (selectedSize > 100) selectedSize = 100;
-    setPageSize(selectedSize);
-    params.set(SEARCH_PARAMS.PAGE, '1');
+    dispatch(setPageSize(selectedSize));
+    params.delete(SEARCH_PARAMS.PAGE);
     params.delete(SEARCH_PARAMS.DETAILS);
     setParams(params);
   }

@@ -1,11 +1,12 @@
 import PaginationPages from './PaginationPages/PaginationPages';
 import PaginationSize from './PaginationSize/PaginationSize';
 import './Pagination.scss';
+import { PaginationProps } from './Pagination.types';
 
-function Pagination() {
+function Pagination({ gamesCount }: PaginationProps) {
   return (
     <div className="pagination">
-      <PaginationPages />
+      <PaginationPages gamesCount={gamesCount} />
       <PaginationSize />
     </div>
   );

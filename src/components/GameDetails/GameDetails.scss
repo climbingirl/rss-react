@@ -33,32 +33,6 @@
     column-gap: 10px;
   }
 
-  &__content {
-    flex-basis: 90%;
-    margin: 0 auto;
-    text-align: center;
-    margin-right: 2%;
-  }
-
-  &__image {
-    width: 100%;
-    min-height: 400px;
-    max-height: 500px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
-  &__rate,
-  &__web {
-    font-size: 17px;
-    margin-bottom: 10px;
-
-    & > span {
-      color: rgba(255, 255, 255, 0.3);
-      margin-right: 10px;
-    }
-  }
-
   &__close-btn {
     font-size: 20px;
     font-weight: 600;

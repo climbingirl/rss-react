@@ -1,17 +1,22 @@
 import { useSearchParams } from 'react-router-dom';
 import { SEARCH_PARAMS } from '../../../router/searchParams';
-import { useAppContext } from '../../../context/AppContext';
+import { useAppSelector } from '../../../hooks/redux';
+import { PaginationPagesProps } from './PaginationPages.types';
 import './PaginationPages.scss';
 
-function PaginationPages() {
-  const { gamesCount, pageSize } = useAppContext();
+function PaginationPages({ gamesCount }: PaginationPagesProps) {
+  const pageSize = useAppSelector((state) => state.games.pageSize);
   const [params, setParams] = useSearchParams();
   const page = Number(params.get(SEARCH_PARAMS.PAGE)) || 1;
   const pagesCount = Math.round(gamesCount / pageSize);
 
   function handleClick(e: React.MouseEvent) {
     const selectedPage = e.currentTarget.getAttribute('data-page') || '1';
-    params.set(SEARCH_PARAMS.PAGE, selectedPage);
+    if (selectedPage === '1') {
+      params.delete(SEARCH_PARAMS.PAGE);
+    } else {
+      params.set(SEARCH_PARAMS.PAGE, selectedPage);
+    }
     params.delete(SEARCH_PARAMS.DETAILS);
     setParams(params);
   }

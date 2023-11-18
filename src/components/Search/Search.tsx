@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import ErrorBoundaryBtn from '../ErrorBoundary/ErrorBoundaryBtn/ErrorBoundaryBtn';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useAppDispatch } from '../../hooks/redux';
 import { setSearchValue } from '../../store/gamesSlice/gamesSlice';
 import './Search.scss';
+import { SearchProps } from './Search.types';
 
-function Search() {
-  const searchValue = useAppSelector((state) => state.games.searchValue);
+function Search({ searchValue, gamesLoading }: SearchProps) {
   const [value, setValue] = useState(searchValue);
   const dispatch = useAppDispatch();
 
@@ -28,7 +28,7 @@ function Search() {
           type="text"
           onChange={handleChange}
         />
-        <button className="search__btn" type="submit">
+        <button className="search__btn" type="submit" disabled={gamesLoading}>
           Search
         </button>
       </form>
