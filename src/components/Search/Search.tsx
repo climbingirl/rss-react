@@ -5,7 +5,7 @@ import { setSearchValue } from '../../store/gamesSlice/gamesSlice';
 import { SearchProps } from './Search.types';
 import './Search.scss';
 
-function Search({ searchValue, gamesLoading }: SearchProps) {
+function Search({ searchValue, isGamesLoading }: SearchProps) {
   const [value, setValue] = useState(searchValue);
   const dispatch = useAppDispatch();
 
@@ -28,7 +28,7 @@ function Search({ searchValue, gamesLoading }: SearchProps) {
           type="text"
           onChange={handleChange}
         />
-        <button className="search__btn" type="submit" disabled={gamesLoading}>
+        <button className="search__btn" type="submit" disabled={isGamesLoading}>
           Search
         </button>
       </form>

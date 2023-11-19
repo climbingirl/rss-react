@@ -10,10 +10,12 @@ import { SEARCH_PARAMS } from '../../router/searchParams';
 import './MainPage.scss';
 
 function MainPage() {
-  const { searchValue, pageSize } = useAppSelector((state) => state.games);
+  const { searchValue, pageSize, isGamesLoading } = useAppSelector(
+    (state) => state.games
+  );
   const [params] = useSearchParams();
   const page = Number(params.get(SEARCH_PARAMS.PAGE)) || 1;
-  const { data, isFetching } = useGetGamesQuery({
+  const { data } = useGetGamesQuery({
     searchValue,
     pageSize,
     page,
@@ -23,8 +25,8 @@ function MainPage() {
 
   return (
     <section className="main-page">
-      <Search searchValue={searchValue} gamesLoading={isFetching} />
-      {isFetching ? (
+      <Search searchValue={searchValue} isGamesLoading={isGamesLoading} />
+      {isGamesLoading ? (
         <Loader />
       ) : (
         <>

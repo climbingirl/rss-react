@@ -14,7 +14,7 @@ describe('Search', () => {
 
   beforeEach(() => {
     renderWithRouter(
-      <Search searchValue={initialValue} gamesLoading={false} />
+      <Search searchValue={initialValue} isGamesLoading={false} />
     );
     input = screen.getByRole('textbox');
     button = screen.getByRole('button', { name: 'Search' });
