@@ -1,0 +1,53 @@
+.game-details {
+  position: relative;
+  visibility: hidden;
+  width: 0;
+  flex-basis: 0;
+  padding-left: 0;
+  transform: scale(0);
+  transition: 0.3s;
+
+  &.game-details_show {
+    visibility: visible;
+    flex-basis: 50%;
+    padding-left: 2%;
+    width: 100%;
+    transform: scale(1);
+  }
+
+  &__empty {
+    font-size: 25px;
+    line-height: 35px;
+    margin-top: 25%;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__inner {
+    width: 100%;
+    position: sticky;
+    top: 20px;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+  }
+
+  &__close-btn {
+    font-size: 20px;
+    font-weight: 600;
+    width: 35px;
+    height: 35px;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+  }
+}
