@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import ErrorBoundaryBtn from '../ErrorBoundary/ErrorBoundaryBtn/ErrorBoundaryBtn';
 import { useAppDispatch } from '../../hooks/redux';
 import { setSearchValue } from '../../store/gamesSlice/gamesSlice';
-import './Search.scss';
 import { SearchProps } from './Search.types';
+import './Search.scss';
 
 function Search({ searchValue, gamesLoading }: SearchProps) {
   const [value, setValue] = useState(searchValue);

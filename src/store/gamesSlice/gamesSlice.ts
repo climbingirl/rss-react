@@ -6,7 +6,7 @@ const initialState: gamesState = {
   pageSize: 20,
 };
 
-const gamesSlice = createSlice({
+export const gamesSlice = createSlice({
   name: 'games',
   initialState,
   reducers: {

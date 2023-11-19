@@ -14,7 +14,7 @@ describe('GameCard', () => {
     const gameName = screen.getByTestId('game-name');
     expect(gameCard).toBeInTheDocument();
     expect(gameImg).toHaveAccessibleName(game.name);
-    expect(gameImg).toHaveAttribute('src', game.image);
+    expect(gameImg).toHaveAttribute('src', game.background_image);
     expect(gameName).toHaveTextContent(game.name);
   });
 
