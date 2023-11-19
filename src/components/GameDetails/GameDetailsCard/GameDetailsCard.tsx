@@ -3,8 +3,12 @@ import './GameDetailsCard.scss';
 
 function GameDetailsCard({ game }: GameDetailsCardProps) {
   return (
-    <div className="game-details__content">
-      <img className="game-details__image" src={game?.background_image}></img>
+    <div className="game-details__card" data-testid="game-details-card">
+      <img
+        className="game-details__image"
+        src={game?.background_image}
+        alt={game?.name}
+      ></img>
       <h2 className="game-details__name">{game?.name}</h2>
       <div className="game-details__rate">
         <span>Raiting:</span>
@@ -16,7 +20,9 @@ function GameDetailsCard({ game }: GameDetailsCardProps) {
           {game?.website || 'unknown'}
         </a>
       </div>
-      <p className="game-details__desc">{game?.description_raw}</p>
+      <p className="game-details__desc" data-testid="game-details__desc">
+        {game?.description_raw}
+      </p>
     </div>
   );
 }

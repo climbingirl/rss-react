@@ -1,4 +1,4 @@
-import { GameModel } from '../../types/models';
+import { GameDetailsModel, GameModel } from '../../types/models';
 
 export const games: GameModel[] = [
   {
@@ -32,3 +32,14 @@ export const games: GameModel[] = [
       'https://media.rawg.io/media/games/9aa/9aa42d16d425fa6f179fc9dc2f763647.jpg',
   },
 ];
+
+export const gameDetails: GameDetailsModel = {
+  id: 1,
+  name: 'Grand Theft Auto V',
+  background_image:
+    'https://media.rawg.io/media/games/20a/20aa03a10cda45239fe22d035c0ebe64.jpg',
+  description_raw:
+    'This asymmetric multiplayer horror game in which one of the players tries on the role of a brutal killer',
+  rating: 3.47,
+  website: 'http://www.deadbydaylight.com',
+};

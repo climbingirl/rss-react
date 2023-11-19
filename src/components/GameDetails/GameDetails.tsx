@@ -2,7 +2,7 @@ import Loader from '../../components/Loader/Loader';
 import { useSearchParams } from 'react-router-dom';
 import { SEARCH_PARAMS } from '../../router/searchParams';
 import { useGetGameQuery } from '../../services/games';
-import GameDetailsCard from './GameDetailsCard/GameDetailsCard.tsx';
+import GameDetailsCard from './GameDetailsCard/GameDetailsCard';
 import { skipToken } from '@reduxjs/toolkit/dist/query/react';
 import { useAppSelector } from '../../hooks/redux';
 import './GameDetails.scss';
